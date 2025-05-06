@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalculatorC</title>
+</head>
+
+<style>
+  body {
+    background-color: rgb(0, 0, 0);
+    font-family: arial;
+  }
+
+  .num {
+    height: 40px;
+  width: 40px;
+  border-radius: 60px;
+  border: none;
+  font-size: 21px;
+  cursor: pointer;
+  margin-right: 5px;
+
+  }
+  .gey-btn{
+    background-color: grey;
+  }
+  .orng-btn{
+    background-color:  orange;
+  }
+  .clr-btn{
+    font-size: 12px;
+    padding: 5px;
+    font-weight: bold;
+  }
+</style>
+
+<body>
+  <p class="js-calculator"></p>
+  <P>
+    <button class="num gey-btn" type="button" onclick="updateCalculation('1')">1</button>
+
+    <button class="num gey-btn" type="button" onclick="updateCalculation('2')">2</button>
+
+    <button class="num gey-btn" type="button" onclick="updateCalculation('3')">3</button>
+    <button class="num orng-btn" type="button" onclick="updateCalculation(' + ')
+     ">+</button>
+  </P>
+
+  <p>
+    <button class="num gey-btn" type="button" onclick="updateCalculation('4')">4</button>
+
+
+    <button class="num gey-btn" type="button" onclick="updateCalculation('5')">5</button>
+
+    <button class="num gey-btn" type="button" onclick="updateCalculation('6')">6</button>
+
+    <button class="num orng-btn" type="button" onclick="updateCalculation(' - ')">-</button>
+  </p>
+
+  <p>
+    <button class="num gey-btn" type="button" onclick="updateCalculation('7')">7</button>
+
+
+    <button class="num gey-btn" type="button" onclick="updateCalculation('8')">8</button>
+
+    <button class="num gey-btn" type="button" onclick="updateCalculation('9')">9</button>
+
+    <button class="num orng-btn" type="button" onclick="updateCalculation(' * ')">*</button>
+  </p>
+
+  <p>
+    <button class="num gey-btn" type="button" onclick="updateCalculation('0')">0</button>
+
+
+    <button class="num gey-btn" type="button" onclick="Calculation+='.';console.log(Calculation);">.</button>
+
+
+    <button class="num gey-btn" type="button"
+      onclick="Calculation=eval(Calculation); document.querySelector('.js-calculator').innerHTML=Calculation">=</button>
+
+    <button class="num orng-btn" type="button" onclick="updateCalculation(' / ')" ;>/</button>
+
+  </p>
+  <button class="num gey-btn clr-btn" type="button" onclick="clearButton()">Clear</button>
+
+  <script>
+    let Calculation = '';
+    let sum = '';
+    let call = 0;
+    function updateCalculation(value) {
+      Calculation += value;
+      // console.log(Calculation);
+      document.querySelector('.js-calculator').innerHTML = Calculation
+    }
+    function calculateResult() {
+      try {
+        const result = eval(Calculation);
+        Calculation = result.toString(); // Convert the result to a string
+        document.querySelector('.js-calculator').innerHTML = Calculation;
+      } catch (error) {
+        Calculation = 'Error'; // Handle any calculation errors
+        document.querySelector('.js-calculator').innerHTML = Calculation;
+      }
+    }
+
+    function clearButton() {
+      Calculation = '';
+      document.querySelector('.js-calculator').textContent = "";
+    }
+
+
+  </script>
+</body>
+
+</html>
